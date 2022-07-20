@@ -87,6 +87,7 @@ public class AppRestController {
     public Map<String, String> postRequest(@PathVariable String key, @RequestBody String requestBody, @RequestHeader(name="Host") String host){
         HashMap<String, String> response = new HashMap<>();
         short status;
+        System.out.println(host);
         if(authenticationManager.isExist(key) || (host.equals("random--number.herokuapp.com") && key.equals("licensedKey"))){
             response.put("requestBody", requestBody);
             status = 200;
