@@ -29,7 +29,8 @@ sendRequest('GET', requestUrl)
 */
 ///*
 const body = {
-  id: 2,
+  name: 'Pop',
+  age: 72
 }
 
 sendRequest('POST', requestUrl, body)
