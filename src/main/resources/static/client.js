@@ -23,7 +23,7 @@ function sendRequest(method, url, body = null) {
 }
 
 /*
-sendRequest('GET', requestURL)
+sendRequest('GET', requestUrl)
   .then(data => console.log(data))
   .catch(err => console.log(err))
 */
@@ -32,7 +32,7 @@ const body = {
   id: 2,
 }
 
-sendRequest('POST', requestURL, body)
+sendRequest('POST', requestUrl, body)
   .then(data => console.log(data))
   .catch(err => console.log(err))
 //*/
