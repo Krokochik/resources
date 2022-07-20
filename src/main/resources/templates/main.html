@@ -1,45 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Campfire gallery</title>
-    <link href="../static/style1.css?ver=1" th:href="@{/style1.css}" rel="stylesheet" />
-    <link href="../static/style.css?ver=1" th:href="@{/style.css}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://raw.githubusercontent.com/Ghost-3/CampfireGallery/main/favicon.png" rel="icon"/>
-
 </head>
 
 <body>
-<nav th:class="${topNav}" id="Topnav">
-    <form class="search" method="post" action="/">
-        <input type="number" onkeydown="javascript: return event.key === 'Backspace' || event.key === 'Delete' ? true : !isNaN(Number(event.key))" min="1" id="input" name="input" th:placeholder="'Id: ' + ${id0}" />
-        <button id="inputButton" type="submit">
-            <i class="fa fa-check"></i>
-        </button>
-    </form>
-    <a th:href="'/?id=' + ${id1} + '&changeId=-1000'">-1000</a>
-    <a th:href="'/?id=' + ${id2} + '&changeId=-100'">-100</a>
-    <a th:href="'/?id=' + ${id3} + '&changeId=-10'">-10</a>
-    <a th:href="'/?id=' + ${id4} + '&changeId=10'">+10</a>
-    <a th:href="'/?id=' + ${id5} + '&changeId=100'">+100</a>
-    <a th:href="'/?id=' + ${id6} + '&changeId=1000'">+1000</a>
-    <a id="Switch" th:href="'/extended/?id=' + ${id7}">Expand
-        <i class="fa fa-toggle-off"></i>
-    </a>
-    <button  class="icon" onclick="window.location.href='/switchTopNav';">
-        <i class="fa fa-bars"></i>
-    </button>
-</nav>
-<main class="main">
-    <a id="prev" class="prev" th:href="'/?id=' + ${id8} + '&changeId=-1'">&#10094;</a>
-    <a id="next" class="next" th:href="'/?id=' + ${id9} + '&changeId=1'">&#10095;</a>
-    <div id="gallery" class="row">
-        <img th:src="'https://campfire.moe/api/image/' + ${id10}" id="image" alt="Image" style="display: none" onload="this.style.display = ''" onerror="addError()">
-        <img id="emergencyImage" style="display: none" src="http://d.zaix.ru/uy67.png" width="350"></td></tr>
-    </div>
-</main>
+    <p>Text</p>
 <script src="../static/client.js?ver=1" th:src="@{/client.js}"></script>
 </body>
 </html>
