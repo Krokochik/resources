@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --main-bg: #18181b;
+    --topNav-bg: rgba(0,0,0,0.3);
+    --topNav-hover: rgba(0,0,0,0.5);
+    --text-color: #ccc;
+    --arrow-color: white;
+    --arrow-bg: rgba(0,0,0,0.8);
+    --transparent: rgba(0,0,0,0)
+}
+
+body {
+    background-color: var(--main-bg);
+    font-family: 'Roboto', times;
+    color: var(--text-color);
+    font-size: 17px;
+}
+
+/* Remove spinner */
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type=number] { 
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* Navigation bar */
+
+.topNav {
+    overflow: hidden;
+    background-color: var(--topNav-bg);
+    border-radius: 5px;
+}
+
+.topNav a, input, button {
+    float: left;
+    display: block;
+    color: var(--text-color);
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    padding: 14px 16px;
+    background-color: var(--transparent);
+    transition: 0.6s ease;
+}
+
+input, button {
+    padding: 13px 16px;
+    border: 0px;
+    outline: none;
+}
+
+#inputButton {
+    margin-right: 5px;
+}
+
+button {
+    background-color: var(--transparent);
+    border-bottom: 1px solid var(--transparent);
+}
+
+#input {
+    max-width: 150px;
+    background-color: var(--topNav-hover);
+    border-bottom: 1px solid var(--topNav-hover);
+}
+
+#inputButton:hover, #inputButton:active {
+    border-bottom: 1px solid var(--topNav-hover);
+}
+
+.topNav a:hover, button:hover, #inputButton:hover,
+.topNav a:active, button:active, #inputButton:active {
+    cursor: pointer;
+    background-color: var(--topNav-hover);
+    color: var(--text-color);
+}
+
+.topNav .icon {
+    display: none;
+}
+
+@media screen and (max-width: 740px) {
+    .topNav a:not(:first-child) {display: none;}
+    .topNav .icon {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .topNav.responsive {position: relative;}
+    .topNav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .topNav.responsive a, .topNav.responsive.search {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+/* Gallery */
+
+#image, #emergencyImage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    max-width: 100%;
+    max-height: 100%;
+    
+    color: var(text-color);
+    text-align: center;
+    border-radius: 3px;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: fixed;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: var(--arrow-color);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    text-decoration: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover,
+.prev:active, .next:active {
+    background-color: var(--arrow-bg);
+}

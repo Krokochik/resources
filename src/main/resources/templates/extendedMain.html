@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Campfire gallery</title>
+    <link href="../static/style1.css?ver=1" th:href="@{/style1.css}" rel="stylesheet" />
+    <link href="../static/style.css?ver=1" th:href="@{/style.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://raw.githubusercontent.com/Ghost-3/CampfireGallery/main/favicon.png" rel="icon"/>
+</head>
+
+<body>
+<nav th:class="${topNav}" id="Topnav">
+    <form class="search" method="post" action="/extended">
+        <input type="number" onkeydown="javascript: return event.key === 'Backspace' || event.key === 'Delete' ? true : !isNaN(Number(event.key))" min="1" id="input" name="input" th:placeholder="'Id: ' + ${id0}" />
+        <button id="inputButton" type="submit">
+            <i class="fa fa-check"></i>
+        </button>
+    </form>
+    <a th:href="'/extended/?id=' + ${id1} + '&changeId=-6000'">-1000</a>
+    <a th:href="'/extended/?id=' + ${id2} + '&changeId=-600'">-100</a>
+    <a th:href="'/extended/?id=' + ${id3} + '&changeId=-60'">-10</a>
+    <a th:href="'/extended/?id=' + ${id4} + '&changeId=60'">+10</a>
+    <a th:href="'/extended/?id=' + ${id5} + '&changeId=600'">+100</a>
+    <a th:href="'/extended/?id=' + ${id6} + '&changeId=6000'">+1000</a>
+    <a id="Switch" th:href="'/?id=' + ${id7}">Expand
+        <i class="fa fa-toggle-on"></i>
+    </a>
+    <button  class="icon" onclick="window.location.href='switchTopNav';">
+        <i class="fa fa-bars"></i>
+    </button>
+</nav>
+<main class="main">
+    <a id="prev" class="prev" th:href="'/extended/?id=' + ${id8} + '&changeId=-6'">&#10094;</a>
+    <a id="next" class="next" th:href="'/extended/?id=' + ${id9} + '&changeId=6'">&#10095;</a>
+    <div id="gallery" class="row">
+        <img class="image" th:src="'https://campfire.moe/api/image/' + ${id10}" style="visibility: hidden" onload="this.style.visibility = 'visible'" onerror="addError()">
+        <img class="image" th:src="'https://campfire.moe/api/image/' + ${id11}" style="visibility: hidden" onload="this.style.visibility = 'visible'" onerror="addError()">
+        <img class="image" th:src="'https://campfire.moe/api/image/' + ${id12}" style="visibility: hidden" onload="this.style.visibility = 'visible'" onerror="addError()">
+        <img id="emergencyImage" style="display: none" src="http://d.zaix.ru/uy67.png" width="350"></td></tr>
+        <img class="image" th:src="'https://campfire.moe/api/image/' + ${id13}" style="visibility: hidden" onload="this.style.visibility = 'visible'" onerror="addError()">
+        <img class="image" th:src="'https://campfire.moe/api/image/' + ${id14}" style="visibility: hidden" onload="this.style.visibility = 'visible'" onerror="addError()">
+        <img class="image" th:src="'https://campfire.moe/api/image/' + ${id15}" style="visibility: hidden" onload="this.style.visibility = 'visible'" onerror="addError()">
+    </div>
+    <button id="backToTop" class="top" style="position: fixed; right: 20px; bottom: 20px; background-color: var(--topNav-bg)" onclick="scrollToTop(1000)">
+        <i class="fa fa-angle-up"></i>
+    </button>
+</main>
+<script src="../static/client.js?ver=1" th:src="@{/client.js}"></script>
+</body>
+</html>
