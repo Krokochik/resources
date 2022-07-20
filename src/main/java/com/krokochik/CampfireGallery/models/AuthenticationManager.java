@@ -71,6 +71,9 @@ public class AuthenticationManager {
     public byte getKeyLength(){
         return KEY_LENGTH;
     }
+    public void setKeyLength(byte length){
+        KEY_LENGTH = length;
+    }
 
     public AuthenticationManager(String key) throws KeySizeException{
         KEY_LENGTH = (byte)key.length();

@@ -1,4 +1,4 @@
-var requestUrl = 'https://random--number.herokuapp.com/get'
+var requestUrl = 'https://random--number.herokuapp.com/post/3~01YZH>Iysc8~e><A8x'
 
 function sendRequest(method, url, body = null) {
   const headers = {
@@ -22,11 +22,12 @@ function sendRequest(method, url, body = null) {
   })
 }
 
+/*
 sendRequest('GET', requestURL)
   .then(data => console.log(data))
   .catch(err => console.log(err))
-
-/*
+*/
+///*
 const body = {
   id: 2,
 }
@@ -34,4 +35,4 @@ const body = {
 sendRequest('POST', requestURL, body)
   .then(data => console.log(data))
   .catch(err => console.log(err))
-*/
+//*/

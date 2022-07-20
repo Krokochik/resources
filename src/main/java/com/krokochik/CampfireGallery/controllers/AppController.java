@@ -16,17 +16,13 @@ public class AppController {
 
     boolean init = true;
 
-    static String devKey = AuthenticationManager.generateKey(20);
+    public static String devKey = AuthenticationManager.generateKey(20);
     public static AuthenticationManager authenticationManager;
 
     static{try{ authenticationManager = new AuthenticationManager(devKey); }catch(AuthenticationManager.KeySizeException ignored){}}
 
     @GetMapping("/")
-    public String main(Model model){
-        if (init) {
-            System.out.println(devKey);
-            init = false;
-        }
+    public String mainGetRequest(Model model){
         return "main";
     }
 
@@ -48,10 +44,16 @@ public class AppController {
         return response;
     }
 
-    @GetMapping(value = "/get", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Map<String, String> getRequests(){
+    @PostMapping("/post/{key}")
+    public Map<String, String> postRequest(@PathVariable String key, String requestBody){
         HashMap<String, String> response = new HashMap<>();
-        response.put("value", "1");
+        short status;
+        if(authenticationManager.isExist(key)){
+            response.put("requestBody", requestBody);
+            status = 200;
+        }
+        else status = 401;
+        response.put("status", status + "");
         return response;
     }
 }
