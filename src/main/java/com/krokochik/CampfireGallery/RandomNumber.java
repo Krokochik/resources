@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CampfireGallery {
+public class RandomNumber {
 
-	public static void main(String[] args) { SpringApplication.run(CampfireGallery.class, args); }
+	public static void main(String[] args) { SpringApplication.run(RandomNumber.class, args); }
 }
