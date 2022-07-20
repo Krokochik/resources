@@ -1,7 +1,9 @@
 package com.krokochik.CampfireGallery.models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AuthenticationManager {
     private ArrayList<String> keys = new ArrayList<>();
@@ -24,6 +26,9 @@ public class AuthenticationManager {
                 return keys.add(key);
             } else return false;
         } else throw new KeySizeException();
+    }
+    public short getLastKeyId(){
+        return (short) (keys.size() - 1);
     }
     public boolean removeKey(String key){
         if (isExist(key)) {
@@ -54,6 +59,21 @@ public class AuthenticationManager {
     }
     public static String generateKey(){
         return generateKey(KEY_LENGTH);
+    }
+    public void removeKey(short id){
+        keys.remove(id);
+    }
+    public void removeAllUserKeys(){
+        String devKey = keys.get(0);
+        keys.clear();
+        keys.add(devKey);
+    }
+    public String[] getAllKeys(){
+        String[] res = new String[keys.size()];
+        for (int i = 0; i < keys.size(); i++){
+            res[i] = keys.get(i);
+        }
+        return res;
     }
 
     public static String shuffle(String input){
