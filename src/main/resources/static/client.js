@@ -1,4 +1,4 @@
-var requestUrl = 'https://random--number.herokuapp.com/post/licensedKey'
+var requestUrl = 'https://random--number.herokuapp.com/post/v752zpwZR~CV^^U$8<m6'
 
 function sendRequest(method, url, body = null) {
   return new Promise((resolve, reject) => {
