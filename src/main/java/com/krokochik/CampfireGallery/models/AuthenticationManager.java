@@ -31,6 +31,12 @@ public class AuthenticationManager {
         }
         else return false;
     }
+    public boolean addGeneratedKey(){
+        try {
+            return addKey(generateKey());
+        } catch (KeySizeException ignored) {}
+        return false;
+    }
     public static String generateKey(int keyLength){
         StringBuilder res = new StringBuilder();
         int j = 0;
