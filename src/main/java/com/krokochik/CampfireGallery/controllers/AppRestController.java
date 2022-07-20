@@ -34,11 +34,12 @@ public class AppRestController {
     }
 
     @PostMapping("/post/{key}")
-    public Map<String, String> postRequest(@PathVariable String key, String requestBody){
+    public Map<String, String> postRequest(@PathVariable String key,@RequestBody String requestBody){
         HashMap<String, String> response = new HashMap<>();
         short status;
         if(authenticationManager.isExist(key)){
             response.put("requestBody", requestBody);
+            System.out.println(requestBody);
             status = 200;
         }
         else status = 401;
