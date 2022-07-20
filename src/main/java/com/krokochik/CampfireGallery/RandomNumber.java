@@ -3,8 +3,8 @@ package com.krokochik.CampfireGallery;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import static com.krokochik.CampfireGallery.controllers.AppController.authenticationManager;
-import static com.krokochik.CampfireGallery.controllers.AppController.devKey;
+import static com.krokochik.CampfireGallery.controllers.AppRestController.authenticationManager;
+import static com.krokochik.CampfireGallery.controllers.AppRestController.devKey;
 
 @SpringBootApplication
 public class RandomNumber {
