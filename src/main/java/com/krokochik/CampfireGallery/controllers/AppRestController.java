@@ -1,14 +1,20 @@
 package com.krokochik.CampfireGallery.controllers;
 
 import com.krokochik.CampfireGallery.models.AuthenticationManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 public class AppRestController {
+
+    @Autowired
+    private HttpServletRequest request;
 
     public static String devKey = AuthenticationManager.generateKey(20);
     public static AuthenticationManager authenticationManager;
@@ -34,16 +40,18 @@ public class AppRestController {
     }
 
     @PostMapping("/post/{key}")
-    public Map<String, String> postRequest(@PathVariable String key, @RequestBody String requestBody){
+    public Map<String, String> postRequest(@PathVariable String key, @RequestBody String requestBody, @RequestHeader(name="Host") String host){
         HashMap<String, String> response = new HashMap<>();
         short status;
         if(authenticationManager.isExist(key)){
             response.put("requestBody", requestBody);
-            System.out.println("body: " + requestBody);
             status = 200;
         }
         else status = 401;
         response.put("status", status + "");
+        System.out.println("Host: " + host);
+        System.out.println(request.getHeader("Host"));
         return response;
     }
+
 }
