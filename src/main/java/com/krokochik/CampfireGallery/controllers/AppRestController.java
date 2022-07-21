@@ -85,7 +85,7 @@ public class AppRestController {
     }
 
     @PostMapping("/post/{key}")
-    public Map<String, String> postRequest(@PathVariable String key, @RequestBody String requestBody, @RequestHeader(name="Host") String host){
+    public Map<String, String> postRequest(@PathVariable String key, @RequestBody String requestBody){
         HashMap<String, String> response = new HashMap<>();
         JSONParser parser = new JSONParser(requestBody);
         Object obj;
