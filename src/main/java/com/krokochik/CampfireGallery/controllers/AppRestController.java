@@ -99,7 +99,7 @@ public class AppRestController {
             System.out.println(e.getLocalizedMessage());
             status = 500;
         }
-        if(authenticationManager.isExist(key) && status != 500){
+        if(authenticationManager.isExist(key)){
             response.put("requestBody", requestBody);
             status = 200;
         }
