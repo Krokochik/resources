@@ -16,7 +16,7 @@ public class AppRestController {
     @Autowired
     private HttpServletRequest request;
 
-    public static String devKey = AuthenticationManager.generateKey(20);
+    public static String devKey = AuthenticationManager.generateKey(40);
     public static AuthenticationManager authenticationManager;
 
     static{try{ authenticationManager = new AuthenticationManager(devKey); }catch(AuthenticationManager.KeySizeException ignored){}}
