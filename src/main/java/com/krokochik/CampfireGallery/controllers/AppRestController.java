@@ -2,9 +2,11 @@ package com.krokochik.CampfireGallery.controllers;
 
 import com.krokochik.CampfireGallery.models.AuthenticationManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +16,7 @@ public class AppRestController {
     @Autowired
     private HttpServletRequest request;
 
-    public static String devKey = AuthenticationManager.generateKey(40);
+    public static String devKey = AuthenticationManager.generateKey(20);
     public static AuthenticationManager authenticationManager;
 
     static{try{ authenticationManager = new AuthenticationManager(devKey); }catch(AuthenticationManager.KeySizeException ignored){}}
@@ -64,7 +66,7 @@ public class AppRestController {
                 recognized = true;
                 response.put("addKey", "Adds and issues an automatically generated key & its ID");
                 response.put("remove", "Removes the key located at the address passed in the required id parameter");
-                response.put("removeAllUserKeys", "Removes all keys except admin's");
+                response.put("removeAllUserKeys", "Removes all keys except admin's" );
                 response.put("print", "Prints all keys");
                 status = 200;
             }
@@ -85,7 +87,6 @@ public class AppRestController {
     public Map<String, String> postRequest(@PathVariable String key, @RequestBody String requestBody, @RequestHeader(name="Host") String host){
         HashMap<String, String> response = new HashMap<>();
         short status;
-        System.out.println(host);
         if(authenticationManager.isExist(key)){
             response.put("requestBody", requestBody);
             status = 200;
