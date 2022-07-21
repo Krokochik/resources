@@ -14,6 +14,5 @@ public class RandomNumber {
 		SpringApplication.run(RandomNumber.class, args);
 		System.out.println("dev key: " + devKey);
 		authenticationManager.addKey("g21<gZigPB$6D^jhYUz6^d$<>1>r2~1$L74F1JlG");
-		try{authenticationManager.addGeneratedKey();}catch(Exception ignored){}
 	}
 }
