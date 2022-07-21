@@ -20,6 +20,9 @@ public class AuthenticationManager {
         }
         return false;
     }
+    public boolean isSiteKey(String key){
+        return keys.indexOf(key) == 1;
+    }
     public boolean addKey(String key) throws KeySizeException {
         if (key.length() == KEY_LENGTH) {
             if (!isExist(key)) {

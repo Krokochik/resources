@@ -1,12 +1,13 @@
 package com.krokochik.CampfireGallery.controllers;
 
+import com.google.gson.JsonObject;
 import com.krokochik.CampfireGallery.models.AuthenticationManager;
+import org.apache.tomcat.util.json.JSONParser;
+import org.apache.tomcat.util.json.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -86,8 +87,19 @@ public class AppRestController {
     @PostMapping("/post/{key}")
     public Map<String, String> postRequest(@PathVariable String key, @RequestBody String requestBody, @RequestHeader(name="Host") String host){
         HashMap<String, String> response = new HashMap<>();
-        short status;
-        if(authenticationManager.isExist(key)){
+        JSONParser parser = new JSONParser(requestBody);
+        Object obj;
+        JsonObject jsonObj = null;
+        short status = 202;
+        try {
+            obj = parser.parse();
+            jsonObj = (JsonObject) obj;
+        }
+        catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+            status = 500;
+        }
+        if(authenticationManager.isExist(key) && status != 500){
             response.put("requestBody", requestBody);
             status = 200;
         }
