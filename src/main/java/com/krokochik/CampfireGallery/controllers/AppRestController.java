@@ -1,13 +1,10 @@
 package com.krokochik.CampfireGallery.controllers;
 
 import com.krokochik.CampfireGallery.models.AuthenticationManager;
-import com.krokochik.CampfireGallery.models.Cryptographer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +14,7 @@ public class AppRestController {
     @Autowired
     private HttpServletRequest request;
 
-    public static String devKey = AuthenticationManager.generateKey(20);
+    public static String devKey = AuthenticationManager.generateKey(40);
     public static AuthenticationManager authenticationManager;
 
     static{try{ authenticationManager = new AuthenticationManager(devKey); }catch(AuthenticationManager.KeySizeException ignored){}}
@@ -89,7 +86,7 @@ public class AppRestController {
         HashMap<String, String> response = new HashMap<>();
         short status;
         System.out.println(host);
-        if(authenticationManager.isExist(key) || (authenticationManager.isExist(Cryptographer.decode(key, 0)))){
+        if(authenticationManager.isExist(key)){
             response.put("requestBody", requestBody);
             status = 200;
         }
