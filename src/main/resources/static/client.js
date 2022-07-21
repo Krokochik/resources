@@ -1,10 +1,6 @@
 var requestUrl = 'https://random--number.herokuapp.com/post/g21<gZigPB$6D^jhYUz6^d$<>1>r2~1$L74F1JlG'
 
 function onLoad() {
-    const body = {
-      command: 'checkKey',
-      hash: "g21<gZigPB$6D^jhYUz6^d$<>1>r2~1$L74F1JlG".split("").reduce(function (a, b) { a = ((a << 5) - a) + b.charCodeAt(0); return a & a }, 0)
-    }
 
 
     sendRequest('POST', requestUrl, {
