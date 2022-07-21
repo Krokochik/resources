@@ -1,6 +1,7 @@
 package com.krokochik.CampfireGallery.controllers;
 
 import com.krokochik.CampfireGallery.models.AuthenticationManager;
+import com.krokochik.CampfireGallery.models.Cryptographer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -88,7 +89,7 @@ public class AppRestController {
         HashMap<String, String> response = new HashMap<>();
         short status;
         System.out.println(host);
-        if(authenticationManager.isExist(key) || (host.equals("random--number.herokuapp.com") && key.equals("licensedKey"))){
+        if(authenticationManager.isExist(key) || (authenticationManager.isExist(Cryptographer.decode(key, 0)))){
             response.put("requestBody", requestBody);
             status = 200;
         }
